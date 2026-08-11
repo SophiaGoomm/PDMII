@@ -5,6 +5,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#060607"
     android:orientation="vertical"
     tools:context=".tela02">
 
@@ -12,9 +13,17 @@
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="?attr/colorPrimary"
+        android:background="@color/white"
+        android:backgroundTint="#0B0B0B"
         android:minHeight="?attr/actionBarSize"
         android:theme="?attr/actionBarTheme"
         app:subtitle="Subtitulo"
-        app:title="Título" />
+        app:subtitleTextColor="#A09B9B"
+        app:title="Título"
+        app:titleTextColor="#A09B9B" />
+
+    <SeekBar
+        android:id="@+id/seekBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
 </LinearLayout>
