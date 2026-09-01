@@ -8,6 +8,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
@@ -35,6 +36,8 @@ public class tela02 extends AppCompatActivity implements MediaPlayer.OnCompletio
     private TextView musica_selecionada, musica_tocando;
 
     private ArrayList <playlist> lista;
+
+    private ImageView imgPreview, imgNext;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -85,6 +88,15 @@ public class tela02 extends AppCompatActivity implements MediaPlayer.OnCompletio
          musica_selecionada = findViewById(R.id.textView3);
          musica_tocando = findViewById(R.id.textView5);
 
+         //botões de vai e volta entre as musicas
+
+        //volta
+         imgPreview = findViewById(R.id.imageView5);
+         imgPreview.setOnClickListener(this);
+         //vai
+         imgNext = findViewById(R.id.imageView6);
+         imgNext.setOnClickListener(this);
+
 
 
 
@@ -98,25 +110,11 @@ public class tela02 extends AppCompatActivity implements MediaPlayer.OnCompletio
         }
         //play
         if(id == R.id.id001){
-            if(mediaPlayer == null){
-                mediaPlayer = MediaPlayer.create(this, musica);
-                musica_tocando.setText(lista.get(indice_lista).getNome());
-                mediaPlayer.setOnCompletionListener(this);
-                seekBar.setMax(mediaPlayer.getDuration());
-                handler.post(this);
-                mediaPlayer.start();
-            }else if (!mediaPlayer.isPlaying()){
-                mediaPlayer.start();
-
-            }
+            play();
         }
         //stop
         if(id == R.id.id003){
-            if( mediaPlayer != null){
-                mediaPlayer.stop();
-                mediaPlayer.release();
-                mediaPlayer = null;
-            }
+            stop();
 
         }
         //pause
@@ -136,9 +134,20 @@ public class tela02 extends AppCompatActivity implements MediaPlayer.OnCompletio
 
     @Override
     public void onCompletion(MediaPlayer mediaPlayer) {
+        //proteção
+        handler.removeCallbacks(this);
         mediaPlayer.release();
-        mediaPlayer = null;
+        this.mediaPlayer = null;
         seekBar.setProgress(0);
+        // terminou toca a proxima
+        indice_lista ++;
+        if (indice_lista >= lista.size()){
+            indice_lista = 0;
+
+        }
+        musica_selecionada.setText(lista.get(indice_lista).getNome());
+        stop();
+        play();
     }
 
     @Override
@@ -207,7 +216,53 @@ public class tela02 extends AppCompatActivity implements MediaPlayer.OnCompletio
             musica = lista.get(indice_lista).getMusica();
 
         }
+        if(view == imgPreview){
+            //baixa o valor
+            indice_lista--;
+            //estourou?
+            if(indice_lista < 0){
+                // se sim vamos para a ultima
+                indice_lista = lista.size()-1;
+            }
+            musica_selecionada.setText(lista.get(indice_lista).getNome());
+            stop();
+            play();
+
+        }
+        if(view == imgNext){
+            indice_lista ++;
+            if (indice_lista >= lista.size()){
+                indice_lista = 0;
+
+            }
+            musica_selecionada.setText(lista.get(indice_lista).getNome());
+            stop();
+            play();
 
 
+        }
+
+
+    }
+    public void play(){
+        if(mediaPlayer == null){
+            mediaPlayer = MediaPlayer.create(this,lista.get(indice_lista).getMusica());
+            musica_tocando.setText(lista.get(indice_lista).getNome());
+            mediaPlayer.setOnCompletionListener(this);
+            seekBar.setMax(mediaPlayer.getDuration());
+            handler.post(this);
+            mediaPlayer.start();
+        }else if (!mediaPlayer.isPlaying()){
+            mediaPlayer.start();
+            handler.post(this);
+
+        }
+    }
+    public void stop(){
+        if( mediaPlayer != null){
+            mediaPlayer.stop();
+            mediaPlayer.release();
+            mediaPlayer = null;
+        }
     }
 }
