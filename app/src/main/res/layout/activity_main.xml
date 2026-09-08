@@ -5,23 +5,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#060607"
+    android:background="@drawable/planodefundo"
     android:gravity="center"
     android:orientation="vertical"
-    tools:context=".MainActivity">
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Tela 01"
-        android:textSize="34sp" />
-
-    <Button
-        android:id="@+id/button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:backgroundTint="#0B0B0B"
-        android:text="Ir para a tela 02"
-        android:textSize="16sp" />
-
-</LinearLayout>
+    tools:context=".MainActivity"/>
