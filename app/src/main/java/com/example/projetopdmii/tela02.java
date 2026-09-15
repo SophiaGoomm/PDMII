@@ -104,6 +104,7 @@ public class tela02 extends AppCompatActivity implements MediaPlayer.OnCompletio
 
 
 
+
     }
 
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -151,7 +152,7 @@ public class tela02 extends AppCompatActivity implements MediaPlayer.OnCompletio
             indice_lista = 0;
 
         }
-        musica_selecionada.setText(lista.get(indice_lista).getNome());
+        //musica_selecionada.setText(lista.get(indice_lista).getNome());
         stop();
         play();
     }
@@ -196,35 +197,35 @@ public class tela02 extends AppCompatActivity implements MediaPlayer.OnCompletio
 
         if(view == card1){
             indice_lista = 0;
-            musica_selecionada.setText(lista.get(indice_lista).getNome());
+            //musica_selecionada.setText(lista.get(indice_lista).getNome());
 
             musica = lista.get(indice_lista).getMusica();
 
         }
         if(view == card2){
             indice_lista = 1;
-            musica_selecionada.setText(lista.get(indice_lista).getNome());
+            //musica_selecionada.setText(lista.get(indice_lista).getNome());
 
             musica = lista.get(indice_lista).getMusica();
 
         }
         if(view == card3){
             indice_lista = 2;
-            musica_selecionada.setText(lista.get(indice_lista).getNome());
+            //musica_selecionada.setText(lista.get(indice_lista).getNome());
 
             musica = lista.get(indice_lista).getMusica();
 
         }
         if(view == card4){
             indice_lista = 3;
-            musica_selecionada.setText(lista.get(indice_lista).getNome());
+            //musica_selecionada.setText(lista.get(indice_lista).getNome());
 
             musica = lista.get(indice_lista).getMusica();
 
         }
         if(view == card5){
             indice_lista = 4;
-            musica_selecionada.setText(lista.get(indice_lista).getNome());
+            //musica_selecionada.setText(lista.get(indice_lista).getNome());
 
             musica = lista.get(indice_lista).getMusica();
 
@@ -237,7 +238,7 @@ public class tela02 extends AppCompatActivity implements MediaPlayer.OnCompletio
                 // se sim vamos para a ultima
                 indice_lista = lista.size()-1;
             }
-            musica_selecionada.setText(lista.get(indice_lista).getNome());
+            //musica_selecionada.setText(lista.get(indice_lista).getNome());
             stop();
             play();
 
@@ -248,12 +249,13 @@ public class tela02 extends AppCompatActivity implements MediaPlayer.OnCompletio
                 indice_lista = 0;
 
             }
-            musica_selecionada.setText(lista.get(indice_lista).getNome());
+            //musica_selecionada.setText(lista.get(indice_lista).getNome());
             stop();
             play();
 
 
         }
+
 
 
     }
@@ -266,6 +268,8 @@ public class tela02 extends AppCompatActivity implements MediaPlayer.OnCompletio
             int x = indice_lista;
             x++;
             toolbar.setSubtitle(Integer.toString(x) + " de " + Integer.toString(lista.size()) );
+
+
 
             mediaPlayer.setOnCompletionListener(this);
             seekBar.setMax(mediaPlayer.getDuration()); // seek bar no tamanho da musica
