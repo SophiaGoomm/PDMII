@@ -35,7 +35,7 @@ public class SlideAdapter extends RecyclerView.Adapter<SlideHolder> {
         holder.titulo.setText(lista_slides.get(position).getNome());
         holder.imagem.setImageResource(lista_slides.get(position).getImagem());
 
-        texto.setText(lista_slides.get(position).getTexto());
+        //texto.setText(lista_slides.get(position).getTexto());
 
     }
 
