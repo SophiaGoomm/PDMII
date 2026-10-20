@@ -1,9 +1,11 @@
 package com.example.projetopdmii;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -11,12 +13,17 @@ import android.widget.TextView;
 
 
 import androidx.activity.EdgeToEdge;
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.viewpager2.widget.ViewPager2;
+
+import com.google.android.material.navigation.NavigationView;
 
 import java.util.ArrayList;
 
@@ -39,8 +46,15 @@ public class Tela03 extends AppCompatActivity implements View.OnClickListener, M
 
     private ImageView icone;
 
+    private DrawerLayout drawerLayout;
+
+    private NavigationView navigationView;
+
+    private ActionBarDrawerToggle toggle;
 
 
+
+    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -89,6 +103,36 @@ public class Tela03 extends AppCompatActivity implements View.OnClickListener, M
 
         icone = findViewById(R.id.imageView10);
         icone.setOnClickListener(this);
+
+        drawerLayout = findViewById(R.id.iddrawer);
+        navigationView = findViewById(R.id.navigationView);
+        toggle = new ActionBarDrawerToggle(this,drawerLayout,toolbar,R.string.open,R.string.close);
+        drawerLayout.addDrawerListener(toggle);
+        toggle.syncState();
+        navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
+                if(menuItem.getItemId() == R.id.id_home){
+                    startActivity(new Intent(Tela03.this, TelaHome.class));
+                    return true;
+
+                }
+                if(menuItem.getItemId() == R.id.id_tela02){ //musica
+                    drawerLayout.closeDrawers();
+                    startActivity(new Intent(Tela03.this, tela02.class));
+                    return true;
+
+
+                }
+                if(menuItem.getItemId() == R.id.id_tela03){ //slides pokemon
+                    drawerLayout.closeDrawers();
+                    return false;
+
+
+                }
+                return false;
+            }
+        });
 
 
 
