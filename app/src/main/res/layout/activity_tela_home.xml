@@ -21,7 +21,9 @@
             android:layout_height="wrap_content"
             android:background="#0B0B0B"
             android:minHeight="?attr/actionBarSize"
-            android:theme="?attr/actionBarTheme" />
+            android:theme="?attr/actionBarTheme"
+            app:title="Home"
+            app:titleTextColor="#A09B9B" />
 
         <TextView
             android:id="@+id/textView4"

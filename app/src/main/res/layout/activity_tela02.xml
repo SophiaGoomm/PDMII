@@ -23,9 +23,8 @@
             android:backgroundTint="#0B0B0B"
             android:minHeight="?attr/actionBarSize"
             android:theme="?attr/actionBarTheme"
-            app:subtitle="Subtitulo"
             app:subtitleTextColor="#A09B9B"
-            app:title="Título"
+            app:title="Music"
             app:titleTextColor="#A09B9B" />
 
         <LinearLayout

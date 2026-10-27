@@ -32,8 +32,8 @@ public class tela02 extends AppCompatActivity implements MediaPlayer.OnCompletio
 
     private int musica, indice_lista;
     private DrawerLayout drawerLayout;
-    NavigationView navigationView;
-    ActionBarDrawerToggle toggle;
+    private NavigationView navigationView;
+    private ActionBarDrawerToggle toggle;
 
     private Toolbar toolbar;
     private MediaPlayer mediaPlayer;
@@ -135,6 +135,19 @@ public class tela02 extends AppCompatActivity implements MediaPlayer.OnCompletio
                     return true;
 
                 }
+                if(menuItem.getItemId() == R.id.id_quiz){ //quiz
+                    drawerLayout.closeDrawers();
+                    startActivity(new Intent(tela02.this, Tela05_quiz.class));
+                    return false;
+
+                }
+                if(menuItem.getItemId() == R.id.id_sobre){ //sobre
+                    drawerLayout.closeDrawers();
+                    startActivity(new Intent(tela02.this, Tela04.class));
+                    return true;
+
+                }
+
                 return false;
             }
         });

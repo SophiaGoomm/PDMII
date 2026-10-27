@@ -130,6 +130,18 @@ public class Tela03 extends AppCompatActivity implements View.OnClickListener, M
 
 
                 }
+                if(menuItem.getItemId() == R.id.id_quiz){ //quiz
+                    drawerLayout.closeDrawers();
+                    startActivity(new Intent(Tela03.this, Tela05_quiz.class));
+                    return false;
+
+                }
+                if(menuItem.getItemId() == R.id.id_sobre){ //sobre
+                    drawerLayout.closeDrawers();
+                    startActivity(new Intent(Tela03.this, Tela04.class));
+                    return true;
+
+                }
                 return false;
             }
         });

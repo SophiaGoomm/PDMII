@@ -63,6 +63,18 @@ public class TelaHome extends AppCompatActivity {
                     return true;
 
                 }
+                if(menuItem.getItemId() == R.id.id_quiz){ //quiz
+                    drawerLayout.closeDrawers();
+                    startActivity(new Intent(TelaHome.this, Tela05_quiz.class));
+                    return false;
+
+                }
+                if(menuItem.getItemId() == R.id.id_sobre){ //sobre
+                    drawerLayout.closeDrawers();
+                    startActivity(new Intent(TelaHome.this, Tela04.class));
+                    return true;
+
+                }
                 return false;
             }
         });
